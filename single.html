@@ -7,33 +7,23 @@
 			font-family:"Source Code Pro";
 			position: fixed; 
 			color:white;
-			font-size:16px;
+			font-size:28px;
 			text-align: justify;
 			width:100%;
 			margin:0;
+			height:100%;
 
 		}
-		#welcome {
-			position: absolute;
-			width:auto;
-			height:auto;		
-		}
-		button {
-			margin-left:160px;
+		#text {
+			text-align: center;
+			margin-top: 20%;
 		}
 		</style>
 	</head>
 	<body>
-		<div id="welcome">
-			<p>We are here to help you expand your vocabulary<p>
-			<button onclick="Begin()" type="button">Click to learn</button>
+		<div id="text">
 		</div>
-		<div id="text" style="display:none">
-		</div>
-		
-
-		
-		<iframe id="frmFile" src="words.txt" onload="LoadFile();" style="display: none;"></iframe>
+		<iframe id="frmFile" src="words.txt" onload="LoadFile();" style="display:none;"></iframe>
 		<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:600' rel='stylesheet' type='text/css'>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script>
@@ -56,32 +46,34 @@
 			}
 			function Text(arrLines){
 		   		var array = [];
-			    for (var i=0; i<1200; i++){
+			    for (var i=0; i<1; i++){
 	 		   		var div = document.getElementById("text");
 	 		   		var random = Math.floor(Math.random() * arrLines.length);
 	 		   		var content = document.createTextNode(arrLines[random] + " ");
 	 		   		div.appendChild(content);
 
 		 		}
-			replaceText();
- 		
+		 		replaceText(); 		
 		 	};	
 
 		 	function replaceText(){
 		 		var array = [];
-			    for (var i=0; i<1200; i++){
+			    for (var i=0; i<1; i++){
 	 		   		var random = Math.floor(Math.random() * arrLines.length);
 	 		   		array[array.length] = (arrLines[random]);
 		 		}
 		 		
 		 		var div = document.getElementById("text");
 		 		div.innerHTML = "";
-		 		for (var i=0; i<1200; i++){
+		 		for (var i=0; i<1; i++){
 		 			var content = document.createTextNode(array[i] + " ");
 		 			div.appendChild(content);
 		 		}
-		 		setTimeout(replaceText,50);
+		 		setTimeout(replaceText, 120);
+
 			}
 		</script>
+
+
 	</body>
 </html>
