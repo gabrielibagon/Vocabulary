@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+	<head>
+		<title>Improve your vocabulary today!</title>
+		<style>
+		body {
+			background: black;
+			font-family:"Source Code Pro";
+			position: fixed; 
+			color:white;
+			font-size:16px;
+
+			text-align: justify;
+			width:100%;
+			margin:0;
+			height:100%;
+		}
+
+		.container {
+			overflow:none;
+			height:90%;
+		}
+
+		div {
+			height:50px;
+		}
+
+		</style>
+	</head>
+	<body>
+		<div class="container">
+		</div>
+		<iframe id="frmFile" src="words.txt" onload="LoadFile();" style="display:none;"></iframe>
+		<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:600' rel='stylesheet' type='text/css'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script>
+
+		/*
+			Creates the divs that will divide the content
+		*/
+			function createDivs() {
+				var i = 0;
+				for (;i < 20;){
+					$("<div id=\"row-" + i + "\"></div>").appendTo(".container");
+					i++;
+				};
+			};
+
+			createDivs();
+
+			var arrLines = [];
+
+			function LoadFile() {
+			    var oFrame = document.getElementById("frmFile");
+			    var strRawContents = oFrame.contentWindow.document.body.childNodes[0].innerHTML;
+			    while (strRawContents.indexOf("\r") >= 0)
+			        strRawContents = strRawContents.replace("\r", "");
+			    arrLines = strRawContents.split("\n");
+			    Text(arrLines);
+			    return arrLines;
+			    
+			}
+			function Text(arrLines){
+		   		var array = [];
+		   		for (var k = 0; k<20;){
+		   			var div = document.getElementById("row-" + k);
+			    	for (var i=0; i<2000; i++){
+	 		   			var random = Math.floor(Math.random() * arrLines.length);
+	 		   			var content = document.createTextNode(arrLines[random] + " ");
+	 		   			div.appendChild(content);
+	 		   		}	
+	 		   		k = k + 1;
+		 			}
+		 		replaceText(); 		
+		 	};	
+
+		 	function replaceText(){
+		 		var array = [];
+			  for (var i=0; i<2000; i++){
+	 		   	var random = Math.floor(Math.random() * arrLines.length);
+	 		   	array[array.length] = (arrLines[random]);
+		 		}
+		 		
+		 		for (var k = 0;k<20;){
+		   		var div = document.getElementById("row-" + k);
+			 		div.innerHTML = "";
+			 		for (var i=0; i<2000; i++){
+			 			var content = document.createTextNode(array[i] + " ");
+			 			div.appendChild(content);
+			 		}
+			 		k = k + 2;
+		 		}
+		 		setTimeout(replaceText, 50);
+
+			}
+		</script>
+
+
+	</body>
+</html>
